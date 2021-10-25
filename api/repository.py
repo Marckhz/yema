@@ -1,7 +1,9 @@
 from django.core.exceptions import ValidationError
 from django.db import IntegrityError
-from appointments.models import Patient, Appointment
-from .dto import PayloadDTO, PersonaDTO, AppointmentDTO
+
+from appointments.models import Appointment, Patient
+
+from .dto import AppointmentDTO, PayloadDTO, PersonaDTO
 
 
 def create_patient(patient: dict):

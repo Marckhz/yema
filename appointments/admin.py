@@ -1,10 +1,9 @@
-from django import forms
 from django.contrib import admin
-from admin_object_actions.admin import ModelAdminObjectActionsMixin
-from admin_object_actions.forms import AdminObjectActionForm
-from .models import Patient, Staff, Appointment
+
 from utils.email import send_email
+
 from .dto import EmailDTO
+from .models import Appointment, Patient, Staff
 
 
 def build_message(**kwargs):
@@ -40,13 +39,12 @@ class AppointmentAdmin(admin.ModelAdmin):
         doctor = form.cleaned_data.get('doctor')
         start_date = form.cleaned_data.get('start_date')
         hour = form.cleaned_data.get('hour')
-        msg= build_message(first_name=first_name, accepted=accepted, comments=comments,
+        msg = build_message(first_name=first_name, accepted=accepted, comments=comments,
                       doctor=doctor, start_date=start_date, hour=hour
                      )
         email_dto = EmailDTO(recipient_list=[email], message=msg)
         obj.save()
         send_email(email_dto.dict())
     
-
 admin.site.site_header = 'Yema Test Marco Hernandez '
-# Register your models here.
+

@@ -1,7 +1,8 @@
-import maya
-from ninja import Schema
 from datetime import date, datetime
 from parser import ParserError
+
+import maya
+from ninja import Schema
 from pydantic import validator
 
 
@@ -26,3 +27,7 @@ class AppointmentDTO(Schema):
 class PayloadDTO(Schema):
     patient: PersonaDTO
     appointment: AppointmentDTO 
+
+
+class Message(Schema):
+    message: str

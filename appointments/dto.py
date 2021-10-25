@@ -1,8 +1,9 @@
-from typing import List
-import maya
-from pydantic import BaseModel, Field, validator
 from datetime import date
 from typing import List
+
+import maya
+from pydantic import BaseModel, Field, validator
+
 
 class EmailDTO(BaseModel):
     recipient_list: List
